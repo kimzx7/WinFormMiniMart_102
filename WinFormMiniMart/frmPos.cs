@@ -184,6 +184,7 @@ namespace WinFormMiniMart
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            string msg = "";
             int lastOrderID = 0; //จะเอําไว้เก็บรหัสที่ใหม่ที่สุดตอนที่ insert order แล ้ว
             if (txtEmployeeID.Text.Trim() == "")
             {
@@ -216,6 +217,8 @@ namespace WinFormMiniMart
                         lastOrderID = dr.GetInt32(dr.GetOrdinal("ReceiptID"));
                     }
                     dr.Close();
+                    msg += "ผู้ขาย: " + txtEmployeeName.Text + Environment.NewLine;
+                    msg += "หมายเลขใบสั่งซื้อ: " + lastOrderID.ToString() + Environment.NewLine;
                     //เพมิ่ ขอ้มลู รํายกํารสนิคํา้ OrderDetail ที่ตรงกับ lastOrderID
                     for (int i = 0; i <= lsvProduct.Items.Count - 1; i++)
                     {
@@ -227,10 +230,15 @@ namespace WinFormMiniMart
                         comm3.Parameters.AddWithValue("@UnitPrice", lsvProduct.Items[i].SubItems[2].Text);
                         comm3.Parameters.AddWithValue("@Quantity", lsvProduct.Items[i].SubItems[3].Text);
                         comm3.ExecuteNonQuery();
+                        msg += lsvProduct.Items[i].SubItems[0].Text + ", ";
+                        msg += lsvProduct.Items[i].SubItems[1].Text + ", ";
+                        msg += lsvProduct.Items[i].SubItems[2].Text + ", ";
+                        msg += lsvProduct.Items[i].SubItems[3].Text + ", "+Environment.NewLine;
                     }
                     tr.Commit();
                     conn.Close();
-                    MessageBox.Show("บันทึกรายการขายเรียบร้อยแล้ว", "ผลการทำงาน");
+                    msg += "\nยอดรวมทั้งหมด: " + lblNetPrice.Text;
+                    MessageBox.Show(msg, "บันทึกรายการขายเรียบร้อยแล้ว");
                 }
                 btnCancel.PerformClick(); //สั่งใหไ้ปกดป่มุ cancel เคลีย์หน้ําจอทั้งหมดใหม่เพื่อเริ่มรํายกํารใหม่
             }
