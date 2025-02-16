@@ -39,6 +39,7 @@
             btnUpdate = new Button();
             btnDelete = new Button();
             btnClearForm = new Button();
+            btnAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCategories).BeginInit();
             SuspendLayout();
             // 
@@ -48,13 +49,14 @@
             dgvCategories.AllowUserToDeleteRows = false;
             dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCategories.Location = new Point(12, 224);
+            dgvCategories.Location = new Point(13, 268);
             dgvCategories.Name = "dgvCategories";
             dgvCategories.ReadOnly = true;
             dgvCategories.RowHeadersWidth = 51;
             dgvCategories.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCategories.Size = new Size(776, 214);
+            dgvCategories.Size = new Size(776, 170);
             dgvCategories.TabIndex = 0;
+            dgvCategories.CellContentDoubleClick += dgvCategories_CellContentDoubleClick;
             // 
             // label1
             // 
@@ -99,7 +101,7 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(143, 69);
+            txtDescription.Location = new Point(143, 66);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(342, 123);
@@ -145,11 +147,22 @@
             btnClearForm.UseVisualStyleBackColor = true;
             btnClearForm.Click += btnClearForm_Click;
             // 
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(537, 198);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(106, 59);
+            btnAdd.TabIndex = 11;
+            btnAdd.Text = "+";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
             // frmCategories
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnAdd);
             Controls.Add(btnClearForm);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
@@ -181,5 +194,6 @@
         private Button btnUpdate;
         private Button btnDelete;
         private Button btnClearForm;
+        private Button btnAdd;
     }
 }

@@ -104,7 +104,7 @@ namespace WinFormMiniMart
                 MessageBox.Show("กรุณาเลือกข้อมูลก่อน");
                 return;
             }
-            if(MessageBox.Show("ต้องการลบข้อมูลนี้หรือไม่","โปรดยืนยัน",MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("ต้องการลบข้อมูลนี้หรือไม่", "โปรดยืนยัน", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
             }
@@ -123,8 +123,30 @@ namespace WinFormMiniMart
             catch (Exception ex)
             {
 
-                MessageBox.Show("เกิดข้อผิดพลาด :"+Environment.NewLine+ex.Message,"ไม่สามารถลบข้อมูลได้");
+                MessageBox.Show("เกิดข้อผิดพลาด :" + Environment.NewLine + ex.Message, "ไม่สามารถลบข้อมูลได้");
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frm_main f = new frm_main();
+            f.status = "insert";
+            f.ShowDialog();
+            showdata();
+        }
+
+       
+
+        private void dgvCategories_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frm_main f = new frm_main();
+            f.status = "update";
+            var dgv = dgvCategories.CurrentRow.Cells;
+            f.categoryID = Convert.ToInt16(dgv["categoryID"].Value);
+            f.categoryName = dgv["categoryName"].Value.ToString();
+            f.description = dgv["description"].Value.ToString();
+            f.ShowDialog();
+            showdata();
         }
     }
 }
