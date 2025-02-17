@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,23 +37,26 @@ namespace WinFormMiniMart
 
         private void จดการToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form1 frm = new Form1();
-            frm.MdiParent = this;
-            frm.Show();
+            OpenChildForm<Form1>();
+            //Form1 frm = new Form1();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
         private void พนกงานToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form3 frm = new Form3();
-            frm.MdiParent = this;
-            frm.Show();
+            OpenChildForm<Form3>();
+            //Form3 frm = new Form3();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
         private void สนคToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCategories frm = new frmCategories();
-            frm.MdiParent = this;
-            frm.Show();
+            OpenChildForm<frmCategories>();
+            //frmCategories frm = new frmCategories();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
 
@@ -126,9 +130,30 @@ namespace WinFormMiniMart
 
         private void mnu_sell_Click(object sender, EventArgs e)
         {
-            frmPos frm = new frmPos();
-            frm.MdiParent = this;
-            frm.Show();
+            OpenChildForm<frmPos>();
+            //frmPos frm = new frmPos();
+            //frm.MdiParent = this;
+            //frm.Show();
+        }
+
+        private void OpenChildForm<T>() where T : Form, new()
+        {
+            foreach (Form child in this.MdiChildren)
+            {
+                if (child is T)
+                {
+                    child.Activate();
+                    return;
+                }
+            }
+
+            T newChild = new T
+            {
+                MdiParent = this,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            newChild.Show();
+
         }
     }
 }
