@@ -73,6 +73,7 @@ namespace WinFormMiniMart
                 //txtUserName.Text = string.Empty;
                 //txtPassword.Text = string.Empty;
                 //txtUserName.Focus();
+                //
                 EmployeeID = 0;
                 EmpName = string.Empty;
                 Position = string.Empty;
