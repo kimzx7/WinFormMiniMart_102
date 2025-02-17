@@ -77,11 +77,12 @@ namespace WinFormMiniMart
             this.Text = "ชื่อผู้ใช้ :" + f.EmpName + " ตำแหน่ง : " + f.Position;
             if (f.Position == "Sale Manager")
             {
-                showHideMenu(false, false, true);
+                showHideMenu(false, true, false);
             }
             else if (f.Position == "Sale Representative")
             {
-                showHideMenu(false, true, false);
+                
+                showHideMenu(false, false, true);
             }
             else if (f.Position == "Admin")
             {
