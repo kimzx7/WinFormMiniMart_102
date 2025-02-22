@@ -33,15 +33,20 @@
             button2 = new Button();
             txtSearch = new TextBox();
             button3 = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
             SuspendLayout();
             // 
             // dgvEmployees
             // 
+            dgvEmployees.AllowUserToAddRows = false;
+            dgvEmployees.AllowUserToDeleteRows = false;
             dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmployees.Location = new Point(12, 94);
             dgvEmployees.Name = "dgvEmployees";
+            dgvEmployees.ReadOnly = true;
             dgvEmployees.RowHeadersWidth = 51;
+            dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEmployees.Size = new Size(776, 340);
             dgvEmployees.TabIndex = 0;
             dgvEmployees.CellDoubleClick += dgvEmployees_CellDoubleClick;
@@ -70,10 +75,9 @@
             // txtSearch
             // 
             txtSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(36, 26);
-            txtSearch.Multiline = true;
+            txtSearch.Location = new Point(42, 45);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(394, 55);
+            txtSearch.Size = new Size(388, 34);
             txtSearch.TabIndex = 2;
             txtSearch.TextChanged += textBox1_TextChanged;
             // 
@@ -87,11 +91,21 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(42, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(149, 20);
+            label1.TabIndex = 3;
+            label1.Text = "ค้นหาข้อมูลของพนักงาน";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(txtSearch);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -112,5 +126,6 @@
         private Button button2;
         private TextBox txtSearch;
         private Button button3;
+        private Label label1;
     }
 }

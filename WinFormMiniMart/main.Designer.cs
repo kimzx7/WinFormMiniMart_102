@@ -150,7 +150,7 @@
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "main";
-            Text = "main";
+            Text = "MiniMart";
             FormClosing += main_FormClosing;
             Load += main_Load;
             menuStrip1.ResumeLayout(false);

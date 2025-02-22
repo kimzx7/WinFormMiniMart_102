@@ -33,16 +33,16 @@
             button2 = new Button();
             button1 = new Button();
             dgvProducts = new DataGridView();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
             // 
             // txtSearch
             // 
             txtSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(36, 21);
-            txtSearch.Multiline = true;
+            txtSearch.Location = new Point(36, 44);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(394, 55);
+            txtSearch.Size = new Size(394, 34);
             txtSearch.TabIndex = 7;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -78,19 +78,33 @@
             // 
             // dgvProducts
             // 
+            dgvProducts.AllowUserToAddRows = false;
+            dgvProducts.AllowUserToDeleteRows = false;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProducts.Location = new Point(12, 86);
             dgvProducts.Name = "dgvProducts";
+            dgvProducts.ReadOnly = true;
             dgvProducts.RowHeadersWidth = 51;
+            dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProducts.Size = new Size(776, 340);
             dgvProducts.TabIndex = 3;
             dgvProducts.CellDoubleClick += dgvProducts_CellDoubleClick;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(44, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(132, 20);
+            label1.TabIndex = 8;
+            label1.Text = "ค้นหาข้อมูลของสินค้า";
             // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(txtSearch);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -111,5 +125,6 @@
         private Button button2;
         private Button button1;
         private DataGridView dgvProducts;
+        private Label label1;
     }
 }
